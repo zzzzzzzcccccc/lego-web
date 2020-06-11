@@ -9,7 +9,6 @@ class Home extends React.Component<HomeProps, HomeState> {
 
   render() {
     const { home: { tabList } } = this.props;
-    console.log(tabList)
     return(
       <div className={styles.wrapper}>
         <section>

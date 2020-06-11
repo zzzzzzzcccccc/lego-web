@@ -1,3 +1,3 @@
 export interface IBuildForm {
-  a: number
+  a: number;
 }

@@ -9,11 +9,7 @@ class FormTypeConf extends React.Component<FormTypeConfProps, FormTypeConfState>
   render() {
     return (
       <section className={styles.FormTypeConf}>
-        {FORM_TYPE_LIST.map(item => {
-          return(
-            <FormTypeCard key={item.title} record={item} />
-          )
-        })}
+        {FORM_TYPE_LIST.map(item => <FormTypeCard key={item.title} record={item} />)}
       </section>
     )
   }
