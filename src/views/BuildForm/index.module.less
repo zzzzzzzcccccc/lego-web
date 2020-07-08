@@ -1,0 +1,63 @@
+@import "../../assets/style/const.less";
+
+.BuildForm{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+/*左侧容器*/
+.FormComp{
+  width: 360px;
+  height: 100%;
+  background-color: #00000010;
+  overflow: auto;
+}
+.FormCompItem{
+  width: 100%;
+  color: #fff;
+  h3{
+    font-size: 16px;
+    padding-left: 16px;
+    color: #000;
+  }
+}
+.FormCompHide{
+}
+
+/*中部编辑容器*/
+.FormEditor{
+  flex: 1;
+  height: 100%;
+  .FormInfo{
+    width: 100%;
+    height: 100%;
+  }
+  .Sortable{
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    overflow: auto;
+    :global(.ant-row){
+      border: 1px dashed @main-color;
+    }
+  }
+}
+
+/*右侧属性设置容器*/
+.FormAttrSetting{
+  width: 420px;
+  height: 100%;
+  background-color: #00000010;
+  overflow: auto;
+}
+.FormAttrSettingGlobal{
+  width: 100%;
+}
+.FormAttrSettingComp{
+  width: 100%;
+}
+.FormAttrSettingHide{
+}
