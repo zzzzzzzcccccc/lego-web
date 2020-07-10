@@ -1,4 +1,5 @@
 const { override, fixBabelImports, addLessLoader, addDecoratorsLegacy } = require('customize-cra');
+const { getThemeVariables } = require('antd/dist/theme');
 
 //生产环境去除console.* functions
 const dropConsole = () => {
@@ -24,8 +25,16 @@ module.exports = override(
   addLessLoader({
     javascriptEnabled: true,
     localIdentName: '[local]__[hash:base64:5]',
+    // modifyVars: {
+    //   '@primary-color': 'rgb(105, 73, 186)',
+    //   // dark: true, // 开启暗黑模式
+    //   // compact: true, // 开启紧凑模式
+    // }
     modifyVars: {
-      '@primary-color': 'rgb(105, 73, 186)'
+      // ...getThemeVariables({
+      //   dark: true
+      // }),
+      // '@primary-color': 'rgb(105, 73, 186)',
     },
   }),
   dropConsole(),

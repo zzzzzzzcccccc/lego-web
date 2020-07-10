@@ -1,12 +1,13 @@
 import { observable, action } from 'mobx'
-import {IBuildForm} from "./interface";
+import {IBuildForm, IGlobalFormConfig} from "./interface";
 
-const DefaultGlobalFormConfig: any = {
+const DefaultGlobalFormConfig: IGlobalFormConfig = {
   size: undefined,
   layout: 'horizontal',
   labelAlign: 'right',
   labelCol: { span: 8 },
-  wrapperCol: { span: 16 }
+  wrapperCol: { span: 16 },
+  formWidth: 100
 };
 
 class BuildForm implements IBuildForm {
@@ -16,9 +17,23 @@ class BuildForm implements IBuildForm {
   @observable
   buildingFormList = [];
 
+  /**
+   * 当前激活的表单id
+   */
+  @observable
+  currentId = '';
+
   @action.bound
-  setBuildingFormList(list: never[]): void {
+  setBuildingFormList(list: never[], id?: string): void {
     this.buildingFormList = list;
+    if (id) {
+      this.setCurrentId(id)
+    }
+  }
+
+  @action.bound
+  setCurrentId(id: string): void {
+    this.currentId = id;
   }
 
   /**
@@ -28,19 +43,8 @@ class BuildForm implements IBuildForm {
   globalFormConfig = DefaultGlobalFormConfig;
 
   @action.bound
-  setGlobalFormConfig(obj: any): void {
+  setGlobalFormConfig(obj: IGlobalFormConfig): void {
     this.globalFormConfig = obj
-  }
-
-  /**
-   * 当前激活的表单id
-   */
-  @observable
-  currentId = '';
-
-  @action.bound
-  setCurrentId(id: string): void {
-    this.currentId = id;
   }
 
   /**

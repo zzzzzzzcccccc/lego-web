@@ -4,24 +4,45 @@
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
-  overflow: hidden;
+  flex-direction: column;
+  background-color: #fff;
+  .BuildFormNav{
+    width: 100%;
+    background-color: #00000010;
+  }
+  .BuildFormContainer{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+  }
 }
 
 /*左侧容器*/
 .FormComp{
   width: 360px;
   height: 100%;
-  background-color: #00000010;
   overflow: auto;
+  box-shadow: 0 0 10px #00000046;
 }
 .FormCompItem{
   width: 100%;
   color: #fff;
   h3{
-    font-size: 16px;
-    padding-left: 16px;
-    color: #000;
+    font-size: 14px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.85);
+    padding: 16px 0 0 16px;
+  }
+}
+.FormCompInfo{
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 2%;
+  .FormCompInfoItem{
+    width: 48%;
+    margin: 16px 0 0 2%;
   }
 }
 .FormCompHide{
@@ -35,13 +56,19 @@
     width: 100%;
     height: 100%;
   }
-  .Sortable{
+  .FormInfoDrager{
     width: 100%;
     height: 100%;
     padding: 24px;
     overflow: auto;
-    :global(.ant-row){
+    .FormInfoDragerItem{
       border: 1px dashed @main-color;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer;
+    }
+    .FormInfoDragerItemSelected{
+      border-color: #f50f50;
     }
   }
 }
@@ -50,8 +77,8 @@
 .FormAttrSetting{
   width: 420px;
   height: 100%;
-  background-color: #00000010;
   overflow: auto;
+  box-shadow: 0 0 10px #00000046;
 }
 .FormAttrSettingGlobal{
   width: 100%;

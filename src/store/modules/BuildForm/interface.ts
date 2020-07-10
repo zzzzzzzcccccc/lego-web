@@ -1,12 +1,20 @@
+export interface IGlobalFormConfig {
+  size: 'small' | 'large' | undefined | any,
+  layout: 'horizontal',
+  labelAlign: 'left' | 'right',
+  labelCol: { span: number },
+  wrapperCol: { span: number },
+  formWidth: number;
+}
+
 export interface IBuildForm {
   buildingFormList: any[];
-  setBuildingFormList(list: any[]): void;
-
-  globalFormConfig: any;
-  setGlobalFormConfig(obj: any): void;
-
-  currentId?: string;
+  currentId: string;
+  setBuildingFormList(list: any[], currentId?: string): void;
   setCurrentId(id: string): void;
+
+  globalFormConfig: IGlobalFormConfig;
+  setGlobalFormConfig(obj: IGlobalFormConfig): void;
 
   compVisible: boolean;
   setCompVisible(bool:boolean): void;
