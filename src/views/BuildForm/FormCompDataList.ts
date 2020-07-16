@@ -1,10 +1,10 @@
 import React from 'react'
 
-export interface IOptions {
-  label?: string | React.ReactNode;
+export interface IFormCompOptions {
+  label?: string | number | string[];
   value?: any;
   disabled?: boolean;
-  children?: IOptions[];
+  children?: IFormCompOptions[];
 }
 export interface IFormCompDataListInputAttr {
   /**
@@ -71,6 +71,10 @@ export interface IFormCompDataListInputAttr {
    * 输入控件后缀
    */
   suffix?: string;
+  /**
+   * 时间日期控件使用的时间格式
+   */
+  format?: string | any;
 }
 export interface IFormCompDataListItemAttr {
   /**
@@ -98,7 +102,7 @@ export interface IFormCompDataList {
   itemAttr: IFormCompDataListItemAttr;
   inputAttr?: IFormCompDataListInputAttr;
   type: 'inputControl' | 'selectControl' | 'otherControl';
-  options?: IOptions[];
+  options?: IFormCompOptions[];
   style?: React.CSSProperties;
 }
 export interface IFormCompData {
@@ -256,7 +260,7 @@ const FormCompData: IFormCompData[] = [
       },
       {
         title: '日期范围选择',
-        comp: 'RangePicker',
+        comp: 'DatePickerRange',
         type: 'selectControl',
         itemAttr: {
           rules: [
@@ -268,6 +272,37 @@ const FormCompData: IFormCompData[] = [
           disabled: false,
           showTime: false,
           picker: 'date'
+        }
+      },
+      {
+        title: '时间选择器',
+        comp: 'TimePicker',
+        type: "selectControl",
+        itemAttr: {
+          rules: [
+            {required: true, message: '请选择时间'}
+          ]
+        },
+        inputAttr: {
+          placeholder: '请选择时间',
+          disabled: false,
+          format: 'HH:mm:ss'
+        }
+      },
+      {
+        title: '时间范围选择器',
+        comp: 'TimePickerRange',
+        type: "selectControl",
+        itemAttr: {
+          rules: [
+            {required: true, message: '请选择时间'}
+          ]
+        },
+        inputAttr: {
+          placeholder: ['开始事件', '截止时间'],
+          disabled: false,
+          picker: 'time',
+          format: 'HH:mm:ss'
         }
       }
     ]
@@ -344,7 +379,7 @@ const FormCompData: IFormCompData[] = [
         inputAttr: {
           disabled: false
         }
-      }
+      },
     ]
   },
 ];

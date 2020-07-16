@@ -21,4 +21,7 @@ export interface IBuildForm {
 
   confVisible: boolean;
   setConfVisible(bool:boolean): void;
+
+  preViewVisible: boolean;
+  setPreViewVisible(bool: boolean): void;
 }

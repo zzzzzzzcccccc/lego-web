@@ -15,16 +15,17 @@ const FormAttrSettingComp:React.FC = () => {
   }
   const item: IFormCompDataList = JSON.parse(JSON.stringify(buildingFormList.find(record => record.id === currentId)));
 
-  const onValuesChange = (obj: any, formData: any) => {
+  const onValuesChange = (formData: any): void => {
     const list = JSON.parse(JSON.stringify(buildingFormList));
     const index: number = list.map((v: IFormCompDataList) => v.id).indexOf(currentId);
-    setBuildingFormList(update(list, {
-      [index]: { $set: {...formData} }
-    }))
+    setBuildingFormList(update(list, { [index]: { $set: {...formData} } }));
   };
+
   return(
     <section className={styles.FormAttrSettingComp}>
-      <CompConfForm item={item} onValuesChange={onValuesChange} currentId={currentId} />
+      <CompConfForm item={item}
+                    onValuesChange={onValuesChange}
+                    currentId={currentId} />
     </section>
   )
 };

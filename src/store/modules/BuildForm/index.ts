@@ -68,6 +68,17 @@ class BuildForm implements IBuildForm {
   setConfVisible(bool: boolean): void {
     this.confVisible = bool;
   }
+
+  /**
+   * 预览表单弹窗开关
+   */
+  @observable
+  preViewVisible = false;
+
+  @action.bound
+  setPreViewVisible(bool: boolean): void {
+    this.preViewVisible = bool;
+  }
 }
 
 export default BuildForm;

@@ -4,7 +4,7 @@ import { ReactSortable } from 'react-sortablejs'
 import useStore from "../../../../utils/useStore";
 import { observer } from 'mobx-react'
 import {IBuildForm} from "../../../../store/modules/BuildForm/interface";
-import { Input, InputNumber, Form } from 'antd'
+import { Input, InputNumber, Form, Popconfirm, message } from 'antd'
 import {IFormCompDataList} from "../../FormCompDataList";
 import { v4 as uuidV4 } from 'uuid'
 import update from 'immutability-helper'
@@ -21,6 +21,15 @@ const INPUT_CONTROL: string = 'inputControl';
 const FormEditor:React.FC = () => {
   const { buildingFormList, setBuildingFormList, globalFormConfig, currentId, setCurrentId }:IBuildForm = useStore('buildForm');
   const [form] = Form.useForm();
+
+  const onDelete = (id: string): void => {
+    const list = JSON.parse(JSON.stringify(buildingFormList));
+    setBuildingFormList(list.filter((v: IFormCompDataList) => v.id !== id));
+    if (id === currentId) {
+      setCurrentId('')
+    }
+    message.success('控件已删除');
+  };
 
   /**
    * 新增拖拽
@@ -62,25 +71,30 @@ const FormEditor:React.FC = () => {
                        onEnd={onEnd}
                        list={[...buildingFormList]}
                        setList={() => null}>
-          {[...buildingFormList].map((item:IFormCompDataList, index:number) => {
+          {[...buildingFormList].map((item:IFormCompDataList) => {
             const ComponentInfo = GlobalComponent[item.comp];
             const { itemAttr, inputAttr, type, id, style } = item;
 
             return(
-              <div key={id}
-                   onClick={() => setCurrentId(id || '')}
-                   className={`${styles.FormInfoDragerItem} ${currentId === id ? styles.FormInfoDragerItemSelected : ''}`}
-                   style={{ ...style || {}, width: `${style?.width || globalFormConfig.formWidth}%` }}>
-                <Form.Item label={item.title}
-                           data-id={item.id}
-                           name={item.name}
-                           labelCol={itemAttr.labelCol || undefined}
-                           wrapperCol={itemAttr.wrapperCol || undefined}
-                           hasFeedback={!!itemAttr.hasFeedback}
-                           rules={itemAttr.rules}>
-                  {type === INPUT_CONTROL ? <ComponentInfo {...inputAttr || {}} style={{ width: '100%' }} /> : <FormControlMap item={item} />}
-                </Form.Item>
-              </div>
+              <Popconfirm title="确认移除这个控件吗?"
+                          key={id}
+                          onConfirm={() => onDelete(id || '')}
+                          trigger="contextMenu"
+                          placement="leftBottom">
+                <div onClick={() => setCurrentId(id || '')}
+                     className={`${styles.FormInfoDragerItem} ${currentId === id ? styles.FormInfoDragerItemSelected : ''}`}
+                     style={{ ...style || {}, width: `${style?.width || globalFormConfig.formWidth}%` }}>
+                  <Form.Item label={item.title}
+                             data-id={item.id}
+                             name={item.name}
+                             labelCol={itemAttr.labelCol || undefined}
+                             wrapperCol={itemAttr.wrapperCol || undefined}
+                             hasFeedback={!!itemAttr.hasFeedback}
+                             rules={itemAttr.rules}>
+                    {type === INPUT_CONTROL ? <ComponentInfo {...inputAttr || {}} style={{ width: '100%' }} /> : <FormControlMap item={item} />}
+                  </Form.Item>
+                </div>
+              </Popconfirm>
             )
           })}
         </ReactSortable>
