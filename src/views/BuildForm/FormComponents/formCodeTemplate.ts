@@ -52,8 +52,8 @@ const formInputMap = (record: IFormCompDataList): string | null  => {
       return `  <Checkbox.Group${showDisabled()}${showOptions()} />`;
     case 'Select':
       return `  <Select placeholder="${inputAttr?.placeholder}"${showDisabled()}${showShowSearch()} style={{ width: '100%' }} filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-      ${getSelectOptions()}
-      </Select>`;
+          ${getSelectOptions()}
+          </Select>`;
     case 'Cascader':
       return `  <Cascader placeholder="${inputAttr?.placeholder}"${showDisabled()}${showShowSearch()}${showOptions()} style={{ width: '100%' }} />`;
     case 'DatePicker':
@@ -87,7 +87,7 @@ const formInputMap = (record: IFormCompDataList): string | null  => {
       selectOptionList.push(`  <Select.Option value="${options && options[i].value}">${options && options[i].label}</Select.Option>`)
     }
 
-    return selectOptionList.join('\n      ');
+    return selectOptionList.join('\n          ');
   }
 };
 

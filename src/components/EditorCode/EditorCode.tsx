@@ -20,8 +20,4 @@ const EditorCode:React.FC<EditorCodeProps> = (props: EditorCodeProps) => {
   )
 };
 
-EditorCode.defaultProps = {
-  height: 600
-};
-
 export default EditorCode;
