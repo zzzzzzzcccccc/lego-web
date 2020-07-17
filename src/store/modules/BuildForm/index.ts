@@ -79,6 +79,17 @@ class BuildForm implements IBuildForm {
   setPreViewVisible(bool: boolean): void {
     this.preViewVisible = bool;
   }
+
+  /**
+   * 查看源码弹窗开关
+   */
+  @observable
+  preCodeVisible = false;
+
+  @action.bound
+  setPreCodeVisible(bool: boolean): void {
+    this.preCodeVisible = bool;
+  }
 }
 
 export default BuildForm;

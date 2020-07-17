@@ -3,6 +3,8 @@ import {Form, Input, Row, Col, Tabs, Radio, Slider, InputNumber, Button} from 'a
 import {IFormCompDataList, IFormCompOptions} from "../FormCompDataList";
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons'
 import update from 'immutability-helper'
+import {SvgIcon} from "../../../components";
+import styles from '../index.module.less'
 
 interface CompConfFormProps {
   item: IFormCompDataList;
@@ -302,19 +304,19 @@ const CompConfForm:React.FC<CompConfFormProps> = (props: CompConfFormProps) => {
           form={form}
           initialValues={update(item, {})}>
       <Tabs tabPosition="top">
-        <Tabs.TabPane key="basic" tab="基础设置">
+        <Tabs.TabPane key="basic" tab={<span className={styles.TabTitleItem}><SvgIcon type="basic" />基础设置</span>}>
           {renderBasic()}
         </Tabs.TabPane>
 
-        <Tabs.TabPane key="itemAttr" tab="控件设置">
+        <Tabs.TabPane key="itemAttr" tab={<span className={styles.TabTitleItem}><SvgIcon type="controller" />控件设置</span>}>
           {renderItemAttr()}
         </Tabs.TabPane>
 
-        <Tabs.TabPane key="inputAttr" tab="表单设置">
+        <Tabs.TabPane key="inputAttr" tab={<span className={styles.TabTitleItem}><SvgIcon type="form" />表单设置</span>}>
           {renderInputAttr()}
         </Tabs.TabPane>
 
-        <Tabs.TabPane key="style" tab="样式设置">
+        <Tabs.TabPane key="style" tab={<span className={styles.TabTitleItem}><SvgIcon type="css" />样式设置</span>}>
           {renderStyle()}
         </Tabs.TabPane>
       </Tabs>

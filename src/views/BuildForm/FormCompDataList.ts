@@ -68,6 +68,10 @@ export interface IFormCompDataListInputAttr {
    */
   maxLength?: number;
   /**
+   * 控件前缀
+   */
+  prefix?: string;
+  /**
    * 输入控件后缀
    */
   suffix?: string;
@@ -268,7 +272,7 @@ const FormCompData: IFormCompData[] = [
           ]
         },
         inputAttr: {
-          placeholder: ['开始日期', '截止日期'],
+          placeholder: ['开始日期', '结束日期'],
           disabled: false,
           showTime: false,
           picker: 'date'
@@ -299,7 +303,7 @@ const FormCompData: IFormCompData[] = [
           ]
         },
         inputAttr: {
-          placeholder: ['开始事件', '截止时间'],
+          placeholder: ['开始时间', '结束时间'],
           disabled: false,
           picker: 'time',
           format: 'HH:mm:ss'

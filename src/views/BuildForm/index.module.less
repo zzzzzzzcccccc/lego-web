@@ -11,6 +11,15 @@
     box-shadow: 0 0 10px #00000046;
     text-align: center;
     padding: 12px 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .BuildFormNavLeft{
+      flex: 1;
+    }
+    .BuildFormNavRight{
+    }
   }
   .BuildFormContainer{
     width: 100%;
@@ -25,8 +34,8 @@
 .FormComp{
   width: 360px;
   height: 100%;
-  overflow: auto;
   box-shadow: 0 0 10px #00000046;
+  position: relative;
 }
 .FormCompItem{
   width: 100%;
@@ -77,7 +86,7 @@
 
 /*右侧属性设置容器*/
 .FormAttrSetting{
-  width: 420px;
+  width: 440px;
   height: 100%;
   overflow: auto;
   box-shadow: 0 0 10px #00000046;
@@ -89,4 +98,19 @@
   width: 100%;
 }
 .FormAttrSettingHide{
+}
+
+/* 控件设置tab */
+.TabTitleItem{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  svg{
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+    path{
+      fill: rgb(64, 145, 247);
+    }
+  }
 }
