@@ -17,8 +17,8 @@ const FormComp:React.FC = () => {
           <div key={item.title} className={styles.FormCompItem}>
             <h3>{item.title}</h3>
             <ReactSortable list={item.list}
-                           className={styles.FormCompInfo}
                            setList={() => null}
+                           className={styles.FormCompInfo}
                            sort={false}
                            group={{ name: 'editor', pull: 'clone', put: false }}>
               {item.list.map((info) => {
