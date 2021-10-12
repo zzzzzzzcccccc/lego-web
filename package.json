@@ -41,7 +41,7 @@
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "draft-js-prism": "^1.0.6",
-    "electron": "^9.0.0",
+    "electron": "^11.5.0",
     "eslint": "^6.6.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "3.0.3",
